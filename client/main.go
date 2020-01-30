@@ -35,7 +35,7 @@ func main() {
 			return
 		}
 
-		req := &proto.CalculateRequest{Inputs: &proto.CalculateInputs{Operator: operator, X: int64(x), Y: int64(y)}}
+		req := &proto.CalculateRequest{Operator: operator, X: int64(x), Y: int64(y)}
 		if response, err := client.Calculate(ctx, req); err != nil {
 			ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		} else {

@@ -13,7 +13,7 @@ import (
 type server struct{}
 
 func (s *server) Calculate(ctx context.Context, req *proto.CalculateRequest) (*proto.CalculateResponse, error) {
-	operator, x, y := req.GetInputs().GetOperator(), req.GetInputs().GetX(), req.GetInputs().GetY()
+	operator, x, y := req.GetOperator(), req.GetX(), req.GetY()
 	switch operator {
 	case "+", "add", "plus":
 		return &proto.CalculateResponse{Output: x + y}, nil
@@ -24,7 +24,7 @@ func (s *server) Calculate(ctx context.Context, req *proto.CalculateRequest) (*p
 	case "/", "divide", "divided by":
 		return &proto.CalculateResponse{Output: x / y}, nil
 	default:
-		return &proto.CalculateResponse{Output: -1}, errors.New("bad operator")
+		return &proto.CalculateResponse{Output: 0}, errors.New("bad operator")
 	}
 }
 
