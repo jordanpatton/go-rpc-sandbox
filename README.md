@@ -19,3 +19,4 @@
 
 # Links
 - Building an Basic API with gRPC and Protobuf by Tensor Programming ([video](https://www.youtube.com/watch?v=Y92WWaZJl24), [repo](https://github.com/tensor-programming/grpc_tutorial))
+- Protobuf JSON Mapping ([docs](https://developers.google.com/protocol-buffers/docs/proto3#json)).
