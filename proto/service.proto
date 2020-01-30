@@ -11,13 +11,17 @@ message CalculateRequest {
         DIVIDE = 4;
     }
 
+    /** Mathematic operator. */
     Operator operator = 1;
+    /** First operand. */
     int64 x = 2;
+    /** Second operand. */
     int64 y = 3;
 }
 
 message CalculateResponse {
-    int64 output = 1;
+    /** Result of mathematic operation. */
+    int64 result = 1;
 }
 
 service Service {

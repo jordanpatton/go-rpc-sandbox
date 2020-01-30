@@ -59,12 +59,15 @@ func (CalculateRequest_Operator) EnumDescriptor() ([]byte, []int) {
 }
 
 type CalculateRequest struct {
-	Operator             CalculateRequest_Operator `protobuf:"varint,1,opt,name=operator,proto3,enum=proto.CalculateRequest_Operator" json:"operator,omitempty"`
-	X                    int64                     `protobuf:"varint,2,opt,name=x,proto3" json:"x,omitempty"`
-	Y                    int64                     `protobuf:"varint,3,opt,name=y,proto3" json:"y,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
-	XXX_unrecognized     []byte                    `json:"-"`
-	XXX_sizecache        int32                     `json:"-"`
+	//* Mathematic operator.
+	Operator CalculateRequest_Operator `protobuf:"varint,1,opt,name=operator,proto3,enum=proto.CalculateRequest_Operator" json:"operator,omitempty"`
+	//* First operand.
+	X int64 `protobuf:"varint,2,opt,name=x,proto3" json:"x,omitempty"`
+	//* Second operand.
+	Y                    int64    `protobuf:"varint,3,opt,name=y,proto3" json:"y,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *CalculateRequest) Reset()         { *m = CalculateRequest{} }
@@ -114,7 +117,8 @@ func (m *CalculateRequest) GetY() int64 {
 }
 
 type CalculateResponse struct {
-	Output               int64    `protobuf:"varint,1,opt,name=output,proto3" json:"output,omitempty"`
+	//* Result of mathematic operation.
+	Result               int64    `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -145,9 +149,9 @@ func (m *CalculateResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CalculateResponse proto.InternalMessageInfo
 
-func (m *CalculateResponse) GetOutput() int64 {
+func (m *CalculateResponse) GetResult() int64 {
 	if m != nil {
-		return m.Output
+		return m.Result
 	}
 	return 0
 }
@@ -173,10 +177,10 @@ var fileDescriptor_a0b84a42fa06f626 = []byte{
 	0x8b, 0x8b, 0x00, 0xa3, 0x10, 0x0f, 0x17, 0x47, 0x70, 0xa8, 0x53, 0x48, 0x90, 0xa3, 0x73, 0x88,
 	0x00, 0x13, 0x88, 0xe7, 0x1b, 0xea, 0x13, 0xe2, 0x19, 0xe0, 0x13, 0x29, 0xc0, 0x2c, 0xc4, 0xc5,
 	0xc5, 0xe6, 0xe2, 0x19, 0xe6, 0xe9, 0xe2, 0x2a, 0xc0, 0xa2, 0xa4, 0xcd, 0x25, 0x88, 0xe4, 0x98,
-	0xe2, 0x82, 0xfc, 0xbc, 0xe2, 0x54, 0x21, 0x31, 0x2e, 0xb6, 0xfc, 0xd2, 0x92, 0x82, 0xd2, 0x12,
+	0xe2, 0x82, 0xfc, 0xbc, 0xe2, 0x54, 0x21, 0x31, 0x2e, 0xb6, 0xa2, 0xd4, 0xe2, 0xd2, 0x9c, 0x12,
 	0xb0, 0xb3, 0x99, 0x83, 0xa0, 0x3c, 0x23, 0x4f, 0x2e, 0xf6, 0x60, 0x88, 0xef, 0x85, 0xec, 0xb8,
 	0x38, 0xe1, 0xfa, 0x84, 0xc4, 0x71, 0x78, 0x4b, 0x4a, 0x02, 0x53, 0x02, 0x62, 0x45, 0x12, 0x1b,
-	0x58, 0xc2, 0x18, 0x10, 0x00, 0x00, 0xff, 0xff, 0x46, 0xd5, 0xb8, 0x3f, 0x4f, 0x01, 0x00, 0x00,
+	0x58, 0xc2, 0x18, 0x10, 0x00, 0x00, 0xff, 0xff, 0x91, 0x08, 0xa4, 0xdd, 0x4f, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

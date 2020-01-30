@@ -16,18 +16,18 @@ func (s *server) Calculate(ctx context.Context, req *proto.CalculateRequest) (*p
 	operator, x, y := req.GetOperator(), req.GetX(), req.GetY()
 	switch operator {
 	case proto.CalculateRequest_ADD:
-		return &proto.CalculateResponse{Output: x + y}, nil
+		return &proto.CalculateResponse{Result: x + y}, nil
 	case proto.CalculateRequest_SUBTRACT:
-		return &proto.CalculateResponse{Output: x - y}, nil
+		return &proto.CalculateResponse{Result: x - y}, nil
 	case proto.CalculateRequest_MULTIPLY:
-		return &proto.CalculateResponse{Output: x * y}, nil
+		return &proto.CalculateResponse{Result: x * y}, nil
 	case proto.CalculateRequest_DIVIDE:
 		if y == 0 {
-			return &proto.CalculateResponse{Output: 0}, errors.New("cannot divide by zero")
+			return &proto.CalculateResponse{Result: 0}, errors.New("cannot divide by zero")
 		}
-		return &proto.CalculateResponse{Output: x / y}, nil
+		return &proto.CalculateResponse{Result: x / y}, nil
 	default:
-		return &proto.CalculateResponse{Output: 0}, errors.New("bad operator")
+		return &proto.CalculateResponse{Result: 0}, errors.New("bad operator")
 	}
 }
 

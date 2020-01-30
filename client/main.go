@@ -51,7 +51,7 @@ func main() {
 		if response, err := client.Calculate(ctx, req); err != nil {
 			ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		} else {
-			ctx.JSON(http.StatusOK, gin.H{"output": fmt.Sprint(response.Output)})
+			ctx.JSON(http.StatusOK, gin.H{"result": fmt.Sprint(response.Result)})
 		}
 	})
 
