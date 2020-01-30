@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"errors"
 	"net"
 
 	"github.com/jordanpatton/go-rpc-sandbox/proto"
@@ -23,7 +24,7 @@ func (s *server) Calculate(ctx context.Context, req *proto.CalculateRequest) (*p
 	case "/", "divide", "divided by":
 		return &proto.CalculateResponse{Output: x / y}, nil
 	default:
-		return &proto.CalculateResponse{Output: -1}, nil
+		return &proto.CalculateResponse{Output: -1}, errors.New("bad operator")
 	}
 }
 

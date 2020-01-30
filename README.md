@@ -13,6 +13,8 @@
     - `curl http://localhost:4002/calculate/4/-/2`.
     - `curl http://localhost:4002/calculate/4/*/2`.
     - `curl http://localhost:4002/calculate/4/divide/2`.
+4. Test errors:
+    - `curl http://localhost:4002/calculate/4/asdf/2` (bad operator).
 
 # Links
 - Building an Basic API with gRPC and Protobuf by Tensor Programming ([video](https://www.youtube.com/watch?v=Y92WWaZJl24), [repo](https://github.com/tensor-programming/grpc_tutorial))
