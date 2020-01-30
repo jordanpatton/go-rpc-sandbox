@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package proto;
+
+message CalculateInputs {
+    string operator = 1;
+    int64 x = 2;
+    int64 y = 3;
+}
+
+message CalculateRequest {
+    CalculateInputs inputs = 1;
+}
+
+message CalculateResponse {
+    int64 output = 1;
+}
+
+service Service {
+    rpc Calculate(CalculateRequest) returns (CalculateResponse);
+}

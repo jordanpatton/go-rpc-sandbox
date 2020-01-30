@@ -11,28 +11,20 @@ import (
 
 type server struct{}
 
-func (s *server) Add(ctx context.Context, request *proto.MathRequest) (*proto.MathResponse, error) {
-	a, b := request.GetA(), request.GetB()
-	result := a + b
-	return &proto.MathResponse{Result: result}, nil
-}
-
-func (s *server) Divide(ctx context.Context, request *proto.MathRequest) (*proto.MathResponse, error) {
-	a, b := request.GetA(), request.GetB()
-	result := a / b
-	return &proto.MathResponse{Result: result}, nil
-}
-
-func (s *server) Multiply(ctx context.Context, request *proto.MathRequest) (*proto.MathResponse, error) {
-	a, b := request.GetA(), request.GetB()
-	result := a * b
-	return &proto.MathResponse{Result: result}, nil
-}
-
-func (s *server) Subtract(ctx context.Context, request *proto.MathRequest) (*proto.MathResponse, error) {
-	a, b := request.GetA(), request.GetB()
-	result := a - b
-	return &proto.MathResponse{Result: result}, nil
+func (s *server) Calculate(ctx context.Context, req *proto.CalculateRequest) (*proto.CalculateResponse, error) {
+	operator, x, y := req.GetInputs().GetOperator(), req.GetInputs().GetX(), req.GetInputs().GetY()
+	switch operator {
+	case "+":
+		return &proto.CalculateResponse{Output: x + y}, nil
+	case "-":
+		return &proto.CalculateResponse{Output: x - y}, nil
+	case "*":
+		return &proto.CalculateResponse{Output: x * y}, nil
+	case "/":
+		return &proto.CalculateResponse{Output: x / y}, nil
+	default:
+		return &proto.CalculateResponse{Output: -1}, nil
+	}
 }
 
 func main() {
@@ -42,7 +34,7 @@ func main() {
 	}
 
 	grpcServer := grpc.NewServer()
-	proto.RegisterMathServiceServer(grpcServer, &server{})
+	proto.RegisterServiceServer(grpcServer, &server{})
 	reflection.Register(grpcServer)
 	if err := grpcServer.Serve(listener); err != nil {
 		panic(err)
