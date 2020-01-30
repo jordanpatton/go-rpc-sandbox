@@ -21,7 +21,19 @@ func main() {
 	g := gin.Default()
 
 	g.GET("calculate/:x/:operator/:y", func(ctx *gin.Context) {
-		operator := ctx.Param("operator")
+		var operator proto.CalculateRequest_Operator
+		switch ctx.Param("operator") {
+		case "+", "add", "plus":
+			operator = proto.CalculateRequest_ADD
+		case "-", "subtract", "minus":
+			operator = proto.CalculateRequest_SUBTRACT
+		case "*", "multiply", "times":
+			operator = proto.CalculateRequest_MULTIPLY
+		case "/", "divide", "divided by":
+			operator = proto.CalculateRequest_DIVIDE
+		default:
+			operator = proto.CalculateRequest_UNKNOWN
+		}
 
 		x, err := strconv.ParseUint(ctx.Param("x"), 10, 64)
 		if err != nil {
