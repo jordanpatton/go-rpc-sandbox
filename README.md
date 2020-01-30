@@ -12,7 +12,7 @@
     - `curl http://localhost:4002/calculate/4/+/2`.
     - `curl http://localhost:4002/calculate/4/-/2`.
     - `curl http://localhost:4002/calculate/4/*/2`.
-    - Not sure how to divide yet. (`%2F` is not accepted as `/`.)
+    - `curl http://localhost:4002/calculate/4/divide/2`.
 
 # Links
 - Building an Basic API with gRPC and Protobuf by Tensor Programming ([video](https://www.youtube.com/watch?v=Y92WWaZJl24), [repo](https://github.com/tensor-programming/grpc_tutorial))
